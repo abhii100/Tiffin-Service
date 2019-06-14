@@ -1,0 +1,62 @@
+<script>
+    {% if not request.session.PEMAIL %}
+        window.location.href = "{% url 'loginpartnerpage' %}";
+    {% endif %}
+</script>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="{% url 'partnerindex' %}">Tiffin System Website</a>
+
+  <!-- Links -->
+<ul class="navbar-nav ml-auto">      {#   ml-auto class is used to make menu on right side#}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'partnerindex' %}">Home</a>
+    </li>
+
+     <!-- Dropdown -->
+{#    <li class="nav-item dropdown">#}
+{#      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">#}
+{#        Manage Gallery#}
+{#      </a>#}
+{#      <div class="dropdown-menu">#}
+{#        <a class="dropdown-item" href="/addgallerypage">Add Gallery Photos</a>#}
+{#        <a class="dropdown-item" href="/viewgallerypage">View Gallery Photos</a>#}
+{#      </div>#}
+{#    </li>#}
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Manage Items
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/addfooditem">Add Food Item</a>
+        <a class="dropdown-item" href="/viewfooditempage">View Food Item</a>
+      </div>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        My Orders
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/restorderspage?status=Pending">Pending Orders</a>
+        <a class="dropdown-item" href="/restorderspage?status=Other">Completed Orders</a>
+      </div>
+    </li>
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Settings
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'cp_partner' %}">Change Password</a>
+      </div>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="{% url 'partnerlogout' %}">Logout</a>
+    </li>
+  </ul>
+</nav>
+<br>

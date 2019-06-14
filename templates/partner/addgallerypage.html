@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/category.js' %}#}
+{#    </script>#}
+
+</head>
+<body>
+{% include 'partner/partnernavbar.html' %}
+<div class="container">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Add Gallery Photos</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_addgallery">
+                    <div class="row form-group">
+                        <label>Select Photo</label>
+                        <input type="hidden" name="partnerid" id="partnerid" value="{{ request.session.PID }}">
+                        <input type="file" name="photo" data-rule-required="true"
+                               data-msg-required="Please Select Photo"
+                               id="photo" class="form-control">
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <button type="button" onclick="addgallery()" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

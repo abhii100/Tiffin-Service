@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+    <script>
+        $(function () {
+            $("#menudate").datepicker({minDate: "+1D", maxDate: "+15D"});
+        });
+    </script>
+</head>
+<body onload="getpartnerbyid(); getgallerybypartner({{ id }})">
+{% if not request.session.CUSTID %}
+    {% include 'publicnavbar.html' %}
+    {% include 'publicsubnavbar.html' %}
+{% else %}
+    {% include 'customer/customernavbar.html' %}
+{% endif %}
+<div class="container">
+    <div class="col-md-12">
+        <input type="hidden" name="partnerid" id="partnerid" value="{{ id }}">
+        <table class="" style="border: 0px !important;">
+            <tr style="border-top: 0px; !important;">
+                <td>
+                    <h1 class="companyname" id="companyname" class="text-capitalize"></h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p id="companymobileno" class="text-capitalize"></p>
+                    <p id="companyemail"></p>
+                    <p id="companyaddress" class="text-capitalize"></p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <h5 class="text-center">MENU</h5>
+        <hr>
+        <div class="col-md-4 offset-4 text-right">
+            <input type="text" name="menudate" id="menudate" class="form-control" onchange="getmenubypartner({{ id }})">
+        </div>
+        <div class="clearfix"></div>
+        <div id="menuitemsoutput" style="margin:20px 0px;"></div>
+        <div id="menuoutput"></div>
+    </div>
+</div>
+
+<div style="margin-top:20px;">
+
+</div>
+{% include 'footer.html' %}
+<div role="dialog" class="modal fade" id="cartmodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <br><br>
+                <h3 class="text-center">1 Item Added to Cart Successfully</h3>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    n = new Date();
+    n.setDate(n.getDate()+1);
+    var dayname = days[n.getDay()];
+    if(dayname=='Sunday')
+    {
+        n.setDate(n.getDate()+1)
+    }
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("menudate").value = m + "/" + d + "/" + y;
+</script>
+</body>
+</html>

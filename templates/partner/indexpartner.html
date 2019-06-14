@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</head>
+<body onload="todaysales({{ request.session.PID }});monthlysales({{ request.session.PID }})">
+{% include 'partner/partnernavbar.html' %}
+<div class="container-fluid">
+    <h3>Welcome, {{ request.session.PEMAIL }}</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-5">
+            <div id="chartContainer" style="height: 400px; width: 90%;"></div>
+        </div>
+        <div class="col-md-7">
+            <div id="chartContainer1" style="height: 400px; width: 90%;"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</body>
+</html>

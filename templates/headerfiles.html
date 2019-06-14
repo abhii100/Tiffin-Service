@@ -1,0 +1,362 @@
+{% load staticfiles %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>#}
+{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>#}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'admin/js1/bootstrap.js' %}"></script>
+<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+
+<script>
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<!--// Meta tag Keywords -->
+
+<!-- Custom-Files -->
+<link rel="stylesheet" href="{% static 'admin/css1/bootstrap.css' %}">
+<!-- Bootstrap-Core-CSS -->
+<link href="{% static 'admin/css1/pogo-slider.min.css' %}" rel="stylesheet" type="text/css" media="all"/>
+<!-- Banner-Slider-CSS -->
+<link rel="stylesheet" href="{% static 'admin/css1/owl.carousel.min.css' %}" type="text/css" media="all"/>
+<link rel="stylesheet" href="{% static 'admin/css1/owl.theme.default.min.css' %}" type="text/css" media="all"/>
+<!-- owl carousel css (for welcome section) -->
+<link rel="stylesheet" href="{% static 'admin/css1/flexslider.css' %}" type="text/css" media="screen" property=""/>
+<!-- flexSlider css (for testimonials) -->
+<link rel="stylesheet" href="{% static 'admin/css1/style.css' %}" type="text/css" media="all"/>
+<!-- Style-CSS -->
+<link rel="stylesheet" href="{% static 'admin/css1/fontawesome-all.css' %}">
+<!-- Font-Awesome-Icons-CSS -->
+<!-- //Custom-Files -->
+
+<!-- Web-Fonts -->
+<link href="//fonts.googleapis.com/css?family=Pacifico&amp;subset=cyrillic,latin-ext,vietnamese" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Barlow+Semi+Condensed:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+      rel="stylesheet">
+<!-- //Web-Fonts -->
+
+
+<style>
+    .mymenu {
+        margin-right: 15px;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .btn-warning, .btn-success {
+        margin: 5px 0px;
+    }
+
+    .partnerdata {
+        margin: 10px 0px;
+        border: 0px solid #eee;
+        padding: 5px;
+        height: 400px;
+        overflow: auto;
+    }
+
+    h1.companyname {
+        color: #895351;
+    }
+
+    .partnerinfo {
+    }
+
+    .address-tr span, h6 {
+        color: #895351;
+    }
+
+    .address-tr {
+        text-transform: capitalize;
+    }
+
+    .address-tr:hover {
+        box-shadow: 2px 2px 10px #000;
+        cursor: pointer;
+    }
+
+    .companyname {
+        margin-bottom: 5px;
+    }
+
+    .heading {
+    {#border-bottom: 1px solid #eee;#}
+    }
+
+    .day-checkbox {
+        margin: 5px;
+    }
+
+    .mycategory {
+        padding: 10px;
+        background-color: #f6f6f6;
+        border: 1px solid #eee;
+        width: 100% !important;
+    }
+
+    .mycategory h5 {
+        margin-bottom: 7px;
+        text-decoration: underline;
+        font-family: Arial !important;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .mytable1 {
+        height: 350px;
+        border: 0px solid #000;
+    }
+
+
+</style>
+
+{#<script src="{% static 'myjs/admin.js' %}"></script>#}
+{#<script src="{% static 'myjs/category.js' %}"></script>#}
+{#<script src="{% static 'myjs/partner.js' %}"></script>#}
+
+<script>
+    {% include 'myjs/admin.js' %}
+    {% include 'myjs/category.js' %}
+    {% include 'myjs/partner.js' %}
+    {% include 'myjs/customer.js' %}
+    {% include 'myjs/offer.js' %}
+    {% include 'myjs/fooditem.js' %}
+    {% include 'myjs/cart.js' %}
+</script>
+<script>
+    $(function () {
+        var dateFormat = "yy-mm-dd",
+            from = $("#fromdate,#searchfromdate")
+                .datepicker({
+                    {#defaultDate: "0",#}
+                    changeMonth: true,
+                    numberOfMonths: 2,
+                    minDate: "0D",
+                    maxDate: "+1M",
+                    dateFormat: "yy-mm-dd"
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $("#todate,#searchtodate").datepicker({
+                {#defaultDate: "+1w",#}
+                changeMonth: true,
+                numberOfMonths: 2,
+                {#minDate: "0D",#}
+                {#maxDate: "+1M",#}
+                dateFormat: "yy-mm-dd"
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    });
+</script>
+<style>
+    .video-w3l {
+        background: url({% static 'images1/bg2.jpg' %}) no-repeat fixed !important;
+    }
+
+    section.stats_test {
+        background: url({% static 'images1/bg5.jpg' %}) no-repeat center fixed !important;
+    }
+
+    .slider.py-5 {
+        background: url({% static 'images1/bg4.jpg' %}) no-repeat bottom right !important;
+    }
+
+    .middle-section {
+        background: url({% static 'images1/bg.jpg' %}) no-repeat fixed !important;
+    }
+
+    #toTop {
+        background: url({% static 'images1/move-top.png' %}) no-repeat 0px 0px !important;
+    }
+
+    .banner-2 {
+        background: url({% static 'images1/b1.jpg' %}) no-repeat center !important;
+    }
+
+</style>
+
+
+{#<script src="{% static 'admin/js1/jquery-2.2.3.min.js' %}"></script>#}
+<!-- Default-JavaScript-File -->
+
+<!-- Owl-Carousel-JavaScript (for welcome section) -->
+<script src="{% static 'admin/js1/owl.carousel.js' %}"></script>
+<script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items: 1,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+    });
+</script>
+<!-- //Owl-Carousel-JavaScript (for welcome section) -->
+
+<!-- flexisel slider (for middle Slider) -->
+<script src="{% static 'admin/js1/jquery.flexisel.js' %}"></script>
+<script>
+    $(window).load(function () {
+        $("#flexiselDemo1").flexisel({
+            visibleItems: 5,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 440,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 667,
+                    visibleItems: 3
+                },
+                tablet: {
+                    changePoint: 900,
+                    visibleItems: 4
+                }
+            }
+        });
+
+    });
+</script>
+<!-- //flexisel slider (for middle Slider) -->
+
+<!-- flexSlider (for testimonials) -->
+<script defer src="{% static 'admin/js1/jquery.flexslider.js' %}"></script>
+<script>
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+</script>
+<!-- //flexSlider (for testimonials) -->
+
+<!-- stats -->
+<script src="{% static 'admin/js1/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'admin/js1/jquery.countup.js' %}"></script>
+<script>
+    $('.counter').countUp();
+</script>
+<!-- //stats -->
+
+<!-- smooth scrolling -->
+<script src="{% static 'admin/js1/SmoothScroll.min.js' %}"></script>
+<!-- //smooth scrolling -->
+
+<!-- start-smoth-scrolling -->
+<script src="{% static 'admin/js1/move-top.js' %}"></script>
+<script src="{% static 'admin/js1/easing.js' %}"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+
+<!-- smooth scrolling-bottom-to-top -->
+<script>
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+    });
+</script>
+<!-- //smooth scrolling-bottom-to-top -->
+
+<!-- Pogo slider (for banner) -->
+<script src="{% static 'admin/js1/jquery.pogo-slider.min.js' %}"></script>
+<script src="{% static 'admin/js1/main.js' %}"></script>
+<!-- Pogo slider (for banner) -->
+
+
+<!-- //Js files -->
+
+<style>
+    .pogoSlider-slide-element {
+        max-height: 180px;
+    }
+
+    h1.logo a {
+        font-size: 30px;
+
+    {#     color: #ff578c !important;#}
+    {#    text-shadow: 2px 2px 5px #000;#}
+    {#    -webkit-text-stroke: 1px black;#}
+    {#color: white;#}
+        text-shadow: 3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+
+        box-shadow: 0px 4px 6px 1px rgba(249, 249, 249, 0.25);
+
+        background: rgba(8, 8, 8, 0.3);
+
+        font-weight: 500;
+
+        color: #ee3b48 !important;
+
+        letter-spacing: 0.1em;
+        margin: 10px 0px 0px 80px;
+        padding:10px;
+    }
+    .inneraboutright
+    {
+        border: 1px solid #ee3b48;
+        padding:50px 70px;
+        background-color: #ee3b48;
+    }
+    .inneraboutright p
+    {
+        color:#000;
+    }
+</style>

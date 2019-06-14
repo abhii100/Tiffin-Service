@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/category.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="offerbyid({{ id }})">
+{% include 'admin/adminnavbar.html' %}
+<div class="container">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Edit Offer</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_editoffer">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>Enter Offer Name</label>
+                            <input type="hidden" name="id" id="id" value="{{ id }}">
+                        <input type="text" name="offername" data-rule-required="true"
+                               data-msg-required="Please Enter Offer Name"
+                               id="offername" class="form-control">
+                        </div>
+                         <div class="col-md-6">
+                            <label>Enter Rate</label>
+                        <input type="number" name="rate" data-rule-required="true"
+                               data-msg-required="Please Enter Rate"
+                               id="rate" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>Start Date</label>
+                        <input type="text" name="fromdate" data-rule-required="true"
+                               data-msg-required="Please Select Date"
+                               id="fromdate" class="form-control">
+                        </div>
+                         <div class="col-md-6">
+                            <label>End Date</label>
+                        <input type="text" name="todate" data-rule-required="true"
+                               data-msg-required="Please Select Date"
+                               id="todate" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label>Enter Description</label>
+                        <textarea name="description" id="description"  class="form-control"></textarea>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <button type="button" onclick="editoffer()" class="btn btn-success">Submit</button>
+                            <a href="/viewofferpage" class="btn btn-warning">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

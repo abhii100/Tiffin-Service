@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        function addbillinginfo() {
+
+            var formdata = new FormData();
+            controls = document.getElementById('frm_billinginfo').elements;
+            for (var i = 0; i < controls.length; i++) {
+                if (controls[i].type === "file") {
+                    if (controls[i].files.length > 0) {
+                        formdata.append(controls[i].name, controls[i].files[0]);
+                    }
+                }
+                else {
+                    formdata.append(controls[i].name, controls[i].value);
+                }
+            }
+
+            if (document.getElementById('paymentmode').value == 'Online') {
+                {#var invoiceid = $("input[name='fees']:checked").val();#}
+                var amount = {{ netamount }} * 100;
+                {#var invoice_type = document.getElementById('invoice_type-' + invoiceid).value;#}
+                var options = {
+                    "key": "rzp_test_dRWiKHS7zr2Gki",
+                    "amount": amount,
+                    "name": "Tiffin System Payment Method",
+                    "description": "Online Payment System",
+                    "image": "http://ecourses.aec.edu.in/aditya/images/po4.png",
+                    "handler": function (response) {
+                        //alert(response.razorpay_payment_id);
+                        if (response.razorpay_payment_id == "") {
+                            //alert('Failed');
+                            var xml = new XMLHttpRequest();
+                            xml.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    window.location.href = "/thankspage";
+                                }
+                            };
+                            xml.open('POST', '/billinginfo', true);
+                            xml.send(formdata);
+                            {#window.location.href = "add_payment_details.php?status=failed";#}
+                        }
+                        else {
+                            //alert('Success');
+                            var xml = new XMLHttpRequest();
+                            xml.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    window.location.href = "/thankspage";
+                                }
+                            };
+                            xml.open('POST', '/billinginfo', true);
+                            xml.send(formdata);
+                            {#window.location.href = "insert_payment.php?status=success&id=" + invoiceid + "&fees=" + invoice_type;#}
+                        }
+                    },
+                    "prefill": {
+                        {#"name": "<?php echo $stu_row[2]; ?>",#}
+                        "email": "{{ request.session.CUSTEMAIL }}"
+                    },
+                    "notes": {
+                        "address": ""
+                    },
+                    "theme": {
+                        "color": "#F37254"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            }
+            else {
+                var xml = new XMLHttpRequest();
+                xml.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        window.location.href = "/thankspage";
+                    }
+                };
+                xml.open('POST', '/billinginfo', true);
+                xml.send(formdata);
+            }
+        }
+    </script>
+
+</head>
+<body>
+{% include 'customer/customernavbar.html' %}
+{#<h3>Welcome, {{ request.session.CUSTEMAIL }}</h3>#}
+<div class="container">
+    <div class="col-md-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Billing Information</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_billinginfo" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row form-group">
+                        <div class="col-xl-12">
+                            <label>Enter Email ID</label>
+                            <input type="email" readonly value="{{ request.session.CUSTEMAIL }}" name="email"
+                                   data-rule-required="true"
+                                   data-msg-required="Please Enter Email ID" id="email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xl-6">
+                            <label>Enter Name</label>
+                            <input type="text" name="name" data-rule-required="true"
+                                   data-msg-required="Please Enter Name" id="name" class="form-control">
+                        </div>
+                        <div class="col-xl-6">
+                            <label>Enter Mobileno</label>
+                            <input type="text" name="mobileno" data-rule-required="true"
+                                   data-msg-required="Please Enter Mobileno" id="mobileno" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>Enter Address</label>
+                            <textarea name="address" id="address" class="form-control"></textarea>
+                        </div>
+                        <div class="col-xl-6">
+                            <label>Enter City</label>
+                            <input type="text" name="city" id="city" data-rule-required="true"
+                                   data-msg-required="Please Enter City" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label>Select Payment Mode</label>
+                            <select type="text" name="paymentmode" id="paymentmode" data-rule-required="true"
+                                    data-msg-required="Please Enter City" class="form-control">
+                                <option value="COD">Cash On Delivery</option>
+                                <option value="Online">Online Payment</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <button type="button" onclick="addbillinginfo()" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+
+</head>
+<body onload="getcartitems()">
+{% if request.session.CUSTID %}
+    {% include 'customer/customernavbar.html' %}
+{% else %}
+    {% include 'publicnavbar.html' %}
+    {% include 'publicsubnavbar.html' %}
+{% endif %}
+
+{#{% if not request.session.CUSTID %}#}
+{#    {% include 'publicnavbar.html' %}#}
+{#    {% include 'publicsubnavbar.html' %}#}
+{#{% endif %}#}
+
+<div class="container">
+    <div class="col-md-10 offset-1">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">My Cart</h2>
+            </div>
+            <div class="card-body">
+                <div id="carttable"></div>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:20px;">
+
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{#{% load static %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/partner.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="viewoffer()">
+{% include 'admin/adminnavbar.html' %}
+<div class="container">
+    <div class="col-md-12">
+        <h2 class="text-center">Offers List</h2>
+        <div class="col-md-8 offset-2 row">
+            <div class="col-md-6">
+                <input type="text" placeholder="Start Date" name="searchfromdate" id="searchfromdate" class="form-control" onchange="searchofferbydate()">
+            </div>
+            <div class="col-md-6">
+                <input type="text" placeholder="End Date" name="searchtodate" id="searchtodate" class="form-control" onchange="searchofferbydate()">
+            </div>
+        </div><br>
+        <div id="output"></div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/partner.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="viewpendingpartner()">
+{% include 'admin/adminnavbar.html' %}
+<div class="container">
+    <div class="col-md-12">
+        <h2 class="text-center">Pending Partners List</h2>
+         <div class="col-md-6 offset-6 row">
+            <label class="col-md-4 text-right">Search</label>
+            <div class="col-md-8">
+                <input type="text" name="searchpartner" placeholder="Type Company or Owner Name" id="searchpartner" class="form-control" onkeyup="searchpartnerbyname()">
+            </div>
+        </div><br>
+        <div id="output"></div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

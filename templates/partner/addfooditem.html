@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/category.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="getcategoryforcombo()">
+{% include 'partner/partnernavbar.html' %}
+<div class="container">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Add Food Item</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_addfoodmenu">
+                    <div class="row form-group">
+                        <label>Select Category</label>
+                        <select name="categorycombo" data-rule-required="true"
+                               data-msg-required="Please Select Category"
+                               id="categorycombo" class="form-control">
+                            <option value="">Choose</option>
+                        </select>
+                    </div>
+                    <div class="row form-group">
+                        <label>Enter Item Name</label>
+                        <input type="text" name="itemname" data-rule-required="true"
+                               data-msg-required="Please Enter Item Name"
+                               id="itemname" class="form-control">
+                    </div>
+                    <div class="row form-group">
+                        <label>Enter Price</label>
+                        <input type="text" name="price" data-rule-required="true"
+                               data-msg-required="Please Enter Price"
+                               id="price" class="form-control">
+                    </div>
+                    <div class="form-group row">
+                        <label>Enter Description</label>
+                        <textarea name="description" id="description"  class="form-control"></textarea>
+                    </div>
+                     <div class="form-group row">
+                        <label>Choose Days</label>
+                         <table style="width: 100%;">
+                             <tr>
+                                 <td>
+                                  <input type="checkbox" name="days[]" value="Monday" class="day-checkbox">Monday
+                                 </td>
+                                 <td>
+                                    <input type="checkbox" name="days[]" value="Tuesday" class="day-checkbox">Tuesday
+                                 </td>
+                                 <td>
+                                     <input type="checkbox" name="days[]" value="Wednesday" class="day-checkbox">Wednesday
+                                 </td>
+                             </tr>
+                             <tr>
+                                 <td>
+                                    <input type="checkbox" name="days[]" value="Thursday" class="day-checkbox">Thursday
+                                 </td>
+                                 <td>
+                                     <input type="checkbox" name="days[]" value="Friday" class="day-checkbox">Friday
+                                 </td>
+                                 <td>
+                                     <input type="checkbox" name="days[]" value="Saturday" class="day-checkbox">Saturday
+                                 </td>
+                             </tr>
+                         </table>
+                     </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <button type="button" onclick="addfooditem()" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

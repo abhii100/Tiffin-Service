@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/admin.js' %}#}
+{#    </script>#}
+
+</head>
+<body>
+{% include 'publicnavbar.html' %}
+{% include 'publicsubnavbar.html' %}
+
+<div class="container">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Admin Login</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_loginadmin">
+                    <div class="row form-group">
+                        <label>Enter Email ID</label>
+                        <input type="email" name="email" data-rule-required="true"
+                               data-msg-required="Please Enter Email ID"
+                               id="email" class="form-control">
+                    </div>
+                    <div class="form-group row">
+                        <label>Enter Password</label>
+                        <input type="password" name="password" id="password" data-rule-required="true"
+                               data-msg-required="Please Enter Password" class="form-control">
+                    </div>
+                    <div class="row form-group" style="margin-bottom: 0px;">
+                        <div class="col-md-12">
+                            <button type="button" onclick="loginadmin()" class="btn btn-success">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:20px;">
+
+</div>
+{% include 'footer.html' %}
+</body>
+</html>

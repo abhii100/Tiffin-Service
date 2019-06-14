@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/partner.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="restorders({{ request.session.PID }},'{{ status }}')">
+{% include 'partner/partnernavbar.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">My Orders</h1><br>
+            <div id="orderdiv"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

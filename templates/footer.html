@@ -1,0 +1,75 @@
+{#<br>#}
+{#<div class="container-fluid" style="background-color: #f0f0f0;">#}
+{#    <div class="col-md-8 offset-2">#}
+{#        <p class="text-center" style="padding:10px 0px;">&copy; 2019. All Rights Reserved.</p>#}
+{#    </div>#}
+{#</div>#}
+{% load staticfiles %}
+
+<!-- footer -->
+<div class="mkl_footer text-center py-4">
+    <div class="container py-xl-5 py-4">
+        <div class="mkls_footer_grid">
+            <h2 class="text-white text-capitalize mb-5">we are best in providing Tiffin Service</h2>
+            <p>Whether you are in a different city, away from home or are just to caught up in your professional life to
+                find the time to step into the kitchen, healthy food is a dream you will always want to get your hands
+                on.</p>
+            <!-- footer logo -->
+            {#				<div class="logo2 my-sm-5 my-4">#}
+            {#					<a class="" href="index.html">#}
+            {#						<img src="images1/logo.png" alt=" " class="img-fluid">#}
+            {#					</a>#}
+            {#				</div>#}
+            <!-- //footer logo -->
+        </div>
+        <!-- address -->
+        <div class="contact-left-footer border-bottom pb-sm-5 pb-4">
+            <ul>
+                <li>
+                    <p class="text-white">
+                        <i class="fas fa-location-arrow mr-2"></i>XYZ,SCF-40, New Market, Amritsar</p>
+                </li>
+                <li class="mx-4">
+                    <p class="text-white">
+                        <i class="fas fa-phone mr-2"></i>+859-852-4525</p>
+                </li>
+                <li>
+                    <p class="text-white">
+                        <i class="far fa-envelope-open mr-2"></i>
+                        <a href="mailto:itiffinserviceasr@gmail.com" class="text-white">itiffinserviceasr@gmail.com</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <!-- //address -->
+    </div>
+</div>
+<!-- //footer -->
+{#<div >#}
+{#    <img src="{% static 'images1/b11.jpg' %}">#}
+{#</div>#}
+<!-- copyright -->
+<div class="w3l-copy text-center py-4">
+    <p class="text-white">© 2019 Tiffin Service System. All rights reserved | Design &amp; Developed by
+        <a href="#"> Abhijit Sood & Pragat Singh</a>
+    </p>
+</div>
+<!-- //copyright -->
+
+<script>
+    function getcartcount() {
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var output = this.responseText;
+                console.log(output);
+                document.getElementById('cartcount').innerHTML = "(" + output + ")";
+            }
+        };
+        xml.open('GET', '/getcartcount', true);
+        xml.send();
+    }
+    {% if request.session.CUSTID %}
+        setInterval(getcartcount, 500);
+    {% endif %}
+</script>

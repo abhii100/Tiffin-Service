@@ -1,0 +1,21 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+
+</head>
+<body>
+
+{% include 'admin/adminnavbar.html' %}
+<h1>Index Page</h1>
+<h3>Welcome, {{ request.session.ADMINEMAIL }}</h3>
+</body>
+</html>

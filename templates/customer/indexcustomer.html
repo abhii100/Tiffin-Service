@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+
+        function showsales(customerid) {
+            var xml = new XMLHttpRequest();
+            xml.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200)
+                {
+                    var ar = JSON.parse(this.response);
+                     var chart = new CanvasJS.Chart("chartContainer", {
+                {#exportEnabled: true,#}
+                animationEnabled: true,
+                title: {
+                    text: "Orders"
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: explodePie
+                },
+                data: [{
+                    type: "pie",
+                    showInLegend: true,
+                    toolTipContent: "{name}: <strong>{y}%</strong>",
+                    indexLabel: "{name} - Rs.{y}",
+                    dataPoints: ar
+                }]
+            });
+            chart.render();
+                }
+            };
+            xml.open('GET','/showsales?customerid='+customerid,true);
+            xml.send();
+        }
+
+        function explodePie(e) {
+            if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+            } else {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+            }
+            e.chart.render();
+
+        }
+    </script>
+</head>
+<body onload="showsales({{ request.session.CUSTID }})">
+{% include 'customer/customernavbar.html' %}
+<div class="container">
+    <h1>Customer Panel</h1>
+    <span class="text-dark">********************************************************</span>
+    <h3>Welcome, {{ request.session.CUSTEMAIL }}</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% include 'footer.html' %}
+</body>
+</html>

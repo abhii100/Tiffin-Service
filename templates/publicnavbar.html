@@ -1,0 +1,143 @@
+{% load staticfiles %}
+<!-- header -->
+	<div class="header">
+		<!-- navigation -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<h1 class="logo">
+				<a class="navbar-brand" href="{% url 'indexpage' %}">
+                    ITiffin Service
+{#					<img src="{% static 'images1/logo.png' %}" alt=" " class="img-fluid">#}
+				</a>
+			</h1>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+			    aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active mymenu">
+						<a class="nav-link" href="{% url 'indexpage' %}">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+{#					<li class="nav-item  mx-lg-3">#}
+{#						<a class="nav-link" href="{% url 'showitemspage' %}">Show Items</a>#}
+{#					</li>#}
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+						    aria-expanded="false">
+							Customer
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{% url 'signupcustomer' %}">Sign Up</a>
+							<a class="dropdown-item" href="{% url 'logincustomerpage' %}">Login</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item scroll" href="#news">Latest News</a>
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+						    aria-expanded="false">
+							Partner
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{% url 'signuppartner' %}">Sign Up</a>
+							<a class="dropdown-item" href="{% url 'loginpartnerpage' %}">Login</a>
+{#							<div class="dropdown-divider"></div>#}
+{#							<a class="dropdown-item scroll" href="#news">Latest News</a>#}
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+						    aria-expanded="false">
+							Admin
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{% url 'loginadminpage' %}">Login</a>
+{#							<div class="dropdown-divider"></div>#}
+{#							<a class="dropdown-item scroll" href="#news">Latest News</a>#}
+						</div>
+					</li>
+
+					<li class="nav-item mymenu">
+						<a class="nav-link" href="{% url 'allpartnerpage' %}">Our Partners</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'mycart' %}">My Cart <span class="fa fa-shopping-cart"></span>
+                        <span class="badge" id="cartcount">(0)</span>
+                        </a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- //navigation -->
+	</div>
+	<!-- //header -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#<nav class="navbar navbar-expand-sm bg-dark navbar-dark">#}
+{#    <!-- Brand/logo -->#}
+{#    <a class="navbar-brand" href="{% url 'indexpage' %}">Tiffin System Website</a>#}
+{##}
+{#    <!-- Links -->#}
+{#    <ul class="navbar-nav ml-auto">      {#   ml-auto class is used to make menu on right side#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'indexpage' %}">Home</a>#}
+{#        </li>#}
+{##}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'showitemspage' %}">Show Items</a>#}
+{#        </li>#}
+{##}
+{#        <!-- Dropdown -->#}
+{#        <li class="nav-item dropdown">#}
+{#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">#}
+{#                Customers#}
+{#            </a>#}
+{#            <div class="dropdown-menu">#}
+{#                <a class="dropdown-item" href="{% url 'signupcustomer' %}">SignUp Customer</a>#}
+{#                <a class="dropdown-item" href="{% url 'logincustomerpage' %}">Login Customer</a>#}
+{#            </div>#}
+{#        </li>#}
+{#        <!-- Dropdown -->#}
+{#        <li class="nav-item dropdown">#}
+{#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">#}
+{#                Partners#}
+{#            </a>#}
+{#            <div class="dropdown-menu">#}
+{#                <a class="dropdown-item" href="{% url 'signuppartner' %}">SignUp Partner</a>#}
+{#                <a class="dropdown-item" href="{% url 'loginpartnerpage' %}">Login Partner</a>#}
+{#            </div>#}
+{#        </li>#}
+{#        <!-- Dropdown -->#}
+{#        <li class="nav-item dropdown">#}
+{#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">#}
+{#                Admin#}
+{#            </a>#}
+{#            <div class="dropdown-menu">#}
+{#                <a class="dropdown-item" href="{% url 'loginadminpage' %}">Login Admin</a>#}
+{#            </div>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link" href="{% url 'indexpage' %}">Contact Us</a>#}
+{#        </li>#}
+{#    </ul>#}
+{#</nav>#}

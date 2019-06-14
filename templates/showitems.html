@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+
+</head>
+<body onload="getitemsforcombo();getcartitems()">
+{% include 'publicnavbar.html' %}
+{% include 'publicsubnavbar.html' %}
+<div class="container">
+    <div class="col-md-8 offset-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Items Page</h2>
+            </div>
+            <div class="card-body">
+                <form id="frm_addtocart">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>Select Item</label>
+                            <select name="itemcombo" data-rule-required="true"
+                                    data-msg-required="Please Select Item"
+                                    id="itemcombo" class="form-control">
+                                <option value="">Choose</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Enter Qty</label>
+                            <input type="number" name="qty" id="qty" value="1" data-rule-required="true"
+                                   data-msg-required="Please Enter Quantity" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label></label>
+                            <button type="button" onclick="addtocart()" class="btn btn-success btn-block">Add To Cart</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="carttable"></div>
+            </div>
+            <div class="card-footer">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:20px;">
+
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>

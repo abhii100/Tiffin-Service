@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'headerfiles.html' %}
+    {#    <script>#}
+    {#        {%  include 'myjs/partner.js' %}#}
+    {#    </script>#}
+
+</head>
+<body onload="getallpartnerforcustomer()">
+{% if not request.session.CUSTID %}
+    {% include 'publicnavbar.html' %}
+    {% include 'publicsubnavbar.html' %}
+{% else %}
+    {% include 'customer/customernavbar.html' %}
+{% endif %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Our Partners</h2>
+            </div>
+            <div class="card-body">
+                <div class="row form-group">
+                    <div class="col-md-5">
+                        <label></label>
+                        <input name="searchpartner" placeholder="Search By Company Name" data-rule-required="true"
+                               data-msg-required="Please Type Name"
+                               id="searchpartner" class="form-control" onkeydown="getallpartnerforcustomer()">
+                        {#                        <button type="button" class="btn btn-success">Search</button>#}
+                        <div class="partnerdata">
+                            <div id="partnerinfo"></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-7">
+                        <label></label>
+                        <div id="partnermap"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top:20px;">
+
+</div>
+{% include 'footer.html' %}
+
+</body>
+</html>

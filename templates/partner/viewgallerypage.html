@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     {% include 'headerfiles.html' %}
+{#    <script>#}
+{#        {%  include 'myjs/category.js' %}#}
+{#    </script>#}
+
+</head>
+<body onload="viewgallery()">
+{% include 'partner/partnernavbar.html' %}
+<div class="container">
+    <div class="col-md-12">
+        <h2 class="text-center">Food Item List</h2>
+        <div id="output"></div>
+    </div>
+</div>
+{% include 'footer.html' %}
+</body>
+</html>
